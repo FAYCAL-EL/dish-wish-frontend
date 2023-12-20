@@ -74,19 +74,10 @@
             android:name=".change_profile"
             android:exported="false" />
         <activity
-            android:name=".view_profile"
-            android:exported="false" />
-        <activity
-            android:name=".become_cook"
-            android:exported="false" />
-        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".Command.MapsHomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
     </application>
 
