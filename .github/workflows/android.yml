@@ -1,0 +1,55 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: Build with Gradle
+      uses: gradle/wrapper-validation-action@v1
+      with:
+        gradle-version: 8.0.0
+        tasks: build
+
+    - name: Run tests
+      run: ./gradlew test
+
+    - name: Package Debug APK
+      run: ./gradlew assembleDebug
+
+    - name: Upload Debug artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/
+
+    - name: Set build status
+      if: always()
+      uses: actions/github-script@v5
+      with:
+        script: |
+          const conclusion = context.job.status === 'success' ? 'success' : 'failure';
+          github.rest.repos.createCommitStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            sha: context.sha,
+            state: conclusion,
+            context: 'GitHub Actions',
+            description: 'Build and Test',
+          });
