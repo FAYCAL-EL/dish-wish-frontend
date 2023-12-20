@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -83,9 +84,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("com.google.android.gms:play-services-maps:18.0.0")
     implementation("com.google.android.gms:play-services-location:18.0.0")
+    implementation("com.airbnb.android:lottie:3.4.0")
 
-    implementation("com.google.android.gms:play-services-maps:18.0.0")
-    implementation("com.google.android.gms:play-services-location:18.0.0")
 
 //    implementation("org.projectlombok:lombok:1.18.30")
 }

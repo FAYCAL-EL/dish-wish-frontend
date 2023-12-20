@@ -60,7 +60,6 @@
         <activity
             android:name="uit.ensak.dish_wish_frontend.view_profile"
             android:exported="false" />
-
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

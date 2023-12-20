@@ -21,4 +21,6 @@ public interface ApiService {
     @POST("commands/create")
     Call<Void> createCommand(@Header("Authorization") String authToken, @Body Command command);
 
+    @GET("commands")
+    Call<List<Command>> getCommands(@Header("Authorization") String authToken);
 }

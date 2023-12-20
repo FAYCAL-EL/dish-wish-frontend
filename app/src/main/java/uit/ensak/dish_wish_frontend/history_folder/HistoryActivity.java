@@ -1,4 +1,3 @@
-/*
 package uit.ensak.dish_wish_frontend.history_folder;
 
 import android.os.Bundle;
@@ -18,7 +17,7 @@ import uit.ensak.dish_wish_frontend.history_folder.CommandAdapter;
 public class HistoryActivity extends AppCompatActivity {
 
     private GridView gridViewDishes;
-    private Button btnOrdered, btnInProgress, btnPrepared;
+    private Button btnOrdered  , btnInProgress, btnPrepared;
     private List<Command> allCommands;
 
     @Override
@@ -82,4 +81,3 @@ public class HistoryActivity extends AppCompatActivity {
         gridViewDishes.setAdapter(adapter);
     }
 }
-*/

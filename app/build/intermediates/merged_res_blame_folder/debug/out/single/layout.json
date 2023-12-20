@@ -8,6 +8,10 @@
         "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_change_profile.xml"
     },
     {
+        "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/activity_create_account.xml",
+        "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_create_account.xml"
+    },
+    {
         "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/activity_become_cook.xml",
         "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_become_cook.xml"
     },
@@ -16,8 +20,20 @@
         "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_view_profile.xml"
     },
     {
+        "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/activity_create_acciunt.xml",
+        "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_create_acciunt.xml"
+    },
+    {
+        "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/activity_connect.xml",
+        "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_connect.xml"
+    },
+    {
         "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/item_search_result.xml",
         "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/item_search_result.xml"
+    },
+    {
+        "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/activity_terms.xml",
+        "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_terms.xml"
     },
     {
         "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/activity_maps_home.xml",
@@ -30,6 +46,10 @@
     {
         "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/bottom_sheet_layout.xml",
         "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/bottom_sheet_layout.xml"
+    },
+    {
+        "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/activity_page_acceuil.xml",
+        "source": "uit.ensak.dish_wish_frontend.app-main-71:/layout/activity_page_acceuil.xml"
     },
     {
         "merged": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/layout/fragment_profile_details.xml",

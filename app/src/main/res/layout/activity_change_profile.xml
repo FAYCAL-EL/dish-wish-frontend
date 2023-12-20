@@ -42,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
     <!-- Second View: portrait_of -->
-    <View
+    <ImageView
         android:id="@+id/portrait_of"
         android:layout_width="92dp"
         android:layout_height="92dp"
@@ -55,6 +55,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/profile_infos"
         tools:layout_editor_absoluteY="83dp" />
+
+    <ImageView
+        android:id="@+id/imageViewChangePhoto"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:src="@drawable/camera"
+        app:layout_constraintTop_toBottomOf="@id/portrait_of"
+        app:layout_constraintStart_toEndOf="@id/portrait_of"
+        app:layout_constraintEnd_toEndOf="@id/portrait_of"
+        android:layout_marginTop="-35dp"
+        android:layout_marginRight="-10dp"/>
+
+
 
 
     <RelativeLayout

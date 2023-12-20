@@ -12,13 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile Settings"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textColor="@android:color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="16dp"/>
 
     <!-- RelativeLayout pour les éléments de l'activité -->
     <RelativeLayout
@@ -45,14 +45,14 @@
     <View
         android:id="@+id/profile"
         android:layout_width="332dp"
-        android:layout_height="435dp"
+        android:layout_height="428dp"
         android:background="@drawable/border_background"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
     <!-- Second View: portrait_of -->
-    <View
+    <ImageView
         android:id="@+id/portrait_of"
         android:layout_width="92dp"
         android:layout_height="92dp"
@@ -241,8 +241,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="80dp"/>
-
+        android:layout_marginBottom="70dp"/>
     <Button
         android:id="@+id/btnDeleteAccount"
         android:layout_width="335dp"

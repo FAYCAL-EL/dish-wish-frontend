@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-67:/values-w600dp-v13/values-w600dp-v13.xml",
+            "outputFile": "uit.ensak.dish_wish_frontend.app-mergeDebugResources-68:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "D:\\DishWishAPP\\dish-wish-frontend\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
+                    "source": "D:\\DishWish\\dish-wish-frontend\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
                     "from": {
                         "startLines": "2,1",
                         "startColumns": "4,4",
-                        "startOffsets": "58,16",
+                        "startOffsets": "60,17",
                         "endColumns": "57,41",
-                        "endOffsets": "111,53"
+                        "endOffsets": "113,54"
                     },
                     "to": {
                         "startLines": "2,3",

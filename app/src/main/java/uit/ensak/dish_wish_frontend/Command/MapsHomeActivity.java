@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import android.location.Geocoder;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
@@ -20,6 +21,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.LocationRequest;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -59,6 +62,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 
@@ -98,6 +102,15 @@ public class MapsHomeActivity extends FragmentActivity implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        LatLng startPosition = new LatLng(34.26101, -6.5802);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startPosition, 8.0f));
 
         mBottomSheetLayout = findViewById(R.id.bottom_sheet_layout);
         sheetBehavior = BottomSheetBehavior.from(mBottomSheetLayout);
@@ -216,12 +229,7 @@ public class MapsHomeActivity extends FragmentActivity implements OnMapReadyCall
                 sendCommandToBackend();
             }
         });
-    }
 
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
         // Check for location permission
        /* if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -300,7 +308,7 @@ public class MapsHomeActivity extends FragmentActivity implements OnMapReadyCall
     }
 
     private void sendCommandToBackend() {
-        String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbWluZWVrOEBnbWFpbC5jb20iLCJpYXQiOjE3MDI1MTg5NTcsImV4cCI6MTcwMjYwNTM1N30.sINKavSpYnCS6fhRuGwkMdOtXJskUYcKMPjjp1wCc80";
+        String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbWluZWVrOEBnbWFpbC5jb20iLCJpYXQiOjE3MDMwMjQ0MzUsImV4cCI6MTcwMzExMDgzNX0.Fo7dPoSIz51aRwCEeiIWRViZgNGeWpqC7eDQrhE9fgY";
 
         //form fields
         EditText Title = findViewById(R.id.title);
@@ -340,7 +348,7 @@ public class MapsHomeActivity extends FragmentActivity implements OnMapReadyCall
             command.setChef(chef);
 
             Client client = new Client();
-            client.setId(11L);
+            client.setId(2L);
             command.setClient(client);
 
             ApiService apiService = RetrofitClient.getApiService();
