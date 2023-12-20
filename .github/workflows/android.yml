@@ -20,11 +20,15 @@ jobs:
         distribution: 'adopt'
         java-version: '17'
 
-    - name: Build with Gradle
+    - name: Validate Gradle Wrapper
       uses: gradle/wrapper-validation-action@v1
       with:
-        gradle-version: 8.0.0
-        tasks: build
+        min-wrapper-count: 1
+        allow-snapshots: false
+        allow-checksums: false
+
+    - name: Build with Gradle
+      run: ./gradlew build
 
     - name: Run tests
       run: ./gradlew test
@@ -40,7 +44,7 @@ jobs:
 
     - name: Set build status
       if: always()
-      uses: actions/github-script@v5
+      uses: actions/github-script@v7
       with:
         script: |
           const conclusion = context.job.status === 'success' ? 'success' : 'failure';
