@@ -54,14 +54,25 @@ jobs:
               context: 'GitHub Actions',
               description: 'Build and Test',
             });
-
+            
   notify:
-    needs: build  # Run this job only if the build job succeeds
-    #if: failure()  # Only run if the previous job fails
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: test var
-        run: echo "${{ github.event.pusher.email }}"
+      - name: Set recipient email based on github.actor
+        id: set_recipient
+        run: |
+          if [[ "${{ github.actor }}" == "FAYCAL-EL" ]]; then
+            echo "faysalelourrat@gmail.com" >> recipient_email
+          elif [[ "${{ github.actor }}" == "ahcinechaymae" ]]; then
+            echo "chaymaa.ahcine@uit.ac.ma" >> recipient_email
+          elif [[ "${{ github.actor }}" == "khaoulazaar" ]]; then
+            echo "khaoula.lazaar@uit.ac.ma" >> recipient_email
+          elif [[ "${{ github.actor }}" == "moamine1996" ]]; then
+            echo "mohamedamine.elkaaba@uit.ac.ma" >> recipient_email
+          else
+            echo "unknown-email@example.com" >> recipient_email
+          fi
 
       - name: Send email on success
         uses: dawidd6/action-send-mail@v3
@@ -72,8 +83,7 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Build succeeded on ${{ github.ref }}
           body: |
-            Build failed for ${{ github.workflow }} on ${{ github.ref }}.
+            Build succeeded for ${{ github.workflow }} on ${{ github.ref }}.
             See the build log here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          to: "faysalelourrat@gmail.com"
+          to: $(cat recipient_email)
           from: "${{ secrets.EMAIL_SENDER }}"
-      
