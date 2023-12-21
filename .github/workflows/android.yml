@@ -74,6 +74,6 @@ jobs:
           body: |
             Build failed for ${{ github.workflow }} on ${{ github.ref }}.
             See the build log here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          to: "${{ github.event.pusher.email }}"
+          to: "faysalelourrat@gmail.com"
           from: "${{ secrets.EMAIL_SENDER }}"
       
