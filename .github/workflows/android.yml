@@ -29,36 +29,34 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: app/build/outputs/
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'adopt'
-          java-version: '17'
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-artifacts
-          path: app/build/outputs/
-
       - name: Run tests
         run: ./gradlew test
 
+      - name: Package Debug APK
+        run: ./gradlew assembleDebug
+
+      - name: Upload Debug artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/
+
+      - name: Set build status
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const conclusion = context.job.status === 'success' ? 'success' : 'failure';
+            github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: conclusion,
+              context: 'GitHub Actions',
+              description: 'Build and Test',
+            });
+
   notify:
-    needs: test  # Run this job only if the test job succeeds
+    needs: build  # Run this job only if the build job succeeds
     if: failure()  # Only run if the previous job fails
     runs-on: ubuntu-latest
     steps:
@@ -67,8 +65,8 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{ secrets.EMAIL_USERNAME }}  # Replace with your email username
-          password: ${{ secrets.EMAIL_PASSWORD }}  # Replace with your email password
+          username: ${{ secrets.EMAIL_USERNAME }}  
+          password: ${{ secrets.EMAIL_PASSWORD }} 
           subject: Build failed on ${{ github.ref }}
           body: |
             Build failed for ${{ github.workflow }} on ${{ github.ref }}.
