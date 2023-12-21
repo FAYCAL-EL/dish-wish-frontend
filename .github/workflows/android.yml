@@ -60,7 +60,7 @@ jobs:
     #if: failure()  # Only run if the previous job fails
     runs-on: ubuntu-latest
     steps:
-      - name: Send email on failure
+      - name: Send email on success
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -69,6 +69,6 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }} 
           subject: Build failed on ${{ github.ref }}
           body: |
-            Build failed for ${{ github.workflow }} on ${{ github.ref }}.
+            Build succeeded for ${{ github.workflow }} on ${{ github.ref }}.
             See the build log here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           recipient: ${{ github.actor }}  # Email address of the commit author
