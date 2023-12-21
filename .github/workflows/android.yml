@@ -29,8 +29,14 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: app/build/outputs/
+
   test:
-    needs: build  # Run this job only if the build job succeeds
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -41,6 +47,12 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '17'
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: app/build/outputs/
 
       - name: Run tests
         run: ./gradlew test
