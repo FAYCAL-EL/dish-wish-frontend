@@ -60,6 +60,9 @@ jobs:
     #if: failure()  # Only run if the previous job fails
     runs-on: ubuntu-latest
     steps:
+      - name: test var
+        run: echo "${{ github.actor }}"
+
       - name: Send email on success
         uses: dawidd6/action-send-mail@v3
         with:
@@ -71,6 +74,6 @@ jobs:
           body: |
             Build failed for ${{ github.workflow }} on ${{ github.ref }}.
             See the build log here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          to: ${{ github.actor }} 
-          from: ${{ secrets.EMAIL_SENDER }}
+          to: "${{ github.actor }}"
+          from: "${{ secrets.EMAIL_SENDER }}"
       
