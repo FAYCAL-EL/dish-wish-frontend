@@ -57,7 +57,7 @@ jobs:
 
   notify:
     needs: build  # Run this job only if the build job succeeds
-    if: failure()  # Only run if the previous job fails
+    #if: failure()  # Only run if the previous job fails
     runs-on: ubuntu-latest
     steps:
       - name: Send email on failure
