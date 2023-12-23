@@ -74,6 +74,7 @@ jobs:
           echo "::set-output name=email_recipient::$email_recipient"
 
       - name: Send email on success
+        if: ${{ success() }}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -83,6 +84,22 @@ jobs:
           subject: Build succeeded on ${{ github.ref }}
           body: |
             Build succeeded for ${{ github.workflow }} on ${{ github.ref }}.
+            See the build log here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          to: ${{ steps.set-email.outputs.email_recipient }}
+          from: "${{ secrets.EMAIL_SENDER }}"
+
+      - name: Send email on failure
+        if: ${{ failure() }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: Build failed on ${{ github.ref }}
+          body: |
+            Build failed for ${{ github.workflow }} on ${{ github.ref }}.
+            Please investigate the failure and take corrective actions.
             See the build log here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           to: ${{ steps.set-email.outputs.email_recipient }}
           from: "${{ secrets.EMAIL_SENDER }}"
