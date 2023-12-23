@@ -85,5 +85,5 @@ jobs:
           body: |
             Build succeeded for ${{ github.workflow }} on ${{ github.ref }}.
             See the build log here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          to: ${{ steps.set_recipient.outputs.recipient_email }}
+          to: "${{ steps.set_recipient.outputs.recipient_email }}"
           from: "${{ secrets.EMAIL_SENDER }}"
